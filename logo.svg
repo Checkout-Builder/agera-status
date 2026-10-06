@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Agera">
+  <title>Agera</title>
+  <rect width="64" height="64" rx="16" fill="#FF4F00"/>
+  <path d="M34 14 L20 36 h11 l-3 16 14-22 H31 z" fill="#fff"/>
+</svg>

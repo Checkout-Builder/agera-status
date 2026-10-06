@@ -1,31 +1,55 @@
-# Change these first
-owner: upptime # Your GitHub organization or username, where this repository lives
-repo: upptime # The name of this repository
+# Agera status page, run by Upptime (https://upptime.js.org): GitHub Actions check each address
+# every five minutes, open an issue when one is down, and publish the status site to GitHub Pages.
+# Nothing runs on Agera's own servers, so the page stays up when they do not.
+owner: Checkout-Builder
+repo: agera-status
 
 sites:
-  - name: Google
-    url: https://www.google.com
-  - name: Wikipedia
-    url: https://en.wikipedia.org
-  - name: Hacker News
-    url: https://news.ycombinator.com
-  - name: Secret Site
-    url: $SECRET_SITE
+  - name: Website
+    url: https://ageraapp.com
+    icon: https://raw.githubusercontent.com/Checkout-Builder/agera-status/master/logo.svg
+  - name: Partner portal
+    url: https://partners.ageraapp.com/login
+    icon: https://raw.githubusercontent.com/Checkout-Builder/agera-status/master/logo.svg
+  - name: Merchant portal
+    url: https://partners.ageraapp.com/portal/login
+    icon: https://raw.githubusercontent.com/Checkout-Builder/agera-status/master/logo.svg
+  - name: Community
+    url: https://partners.ageraapp.com/community
+    icon: https://raw.githubusercontent.com/Checkout-Builder/agera-status/master/logo.svg
+  - name: Agency directory
+    url: https://partners.ageraapp.com/partners
+    icon: https://raw.githubusercontent.com/Checkout-Builder/agera-status/master/logo.svg
+  # The app itself (app.ageraapp.com) has no production host yet (2026-10-06). Add it on launch day:
+  # - name: Agera app
+  #   url: https://app.ageraapp.com
+  #   icon: https://raw.githubusercontent.com/Checkout-Builder/agera-status/master/logo.svg
+
+# Secrets: none. An empty list disables secret substitution (least privilege).
+secrets: []
 
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  cname: demo.upptime.js.org
-  # baseUrl: /your-repo-name
-  logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
-  name: Upptime
-  introTitle: "**Upptime** is the open-source uptime monitor and status page, powered entirely by GitHub."
-  introMessage: This is a sample status page which uses **real-time** data from our [GitHub repository](https://github.com/upptime/upptime). No server required — just GitHub Actions, Issues, and Pages. [**Get your own for free**](https://github.com/upptime/upptime)
+  # Until status.ageraapp.com points at GitHub Pages, the site lives under the repository path.
+  # On the day the DNS record exists: replace the baseUrl line with `cname: status.ageraapp.com`.
+  baseUrl: /agera-status
+  logoUrl: https://raw.githubusercontent.com/Checkout-Builder/agera-status/master/logo.svg
+  name: Agera status
+  introTitle: "**Agera** service status."
+  introMessage: Live checks of ageraapp.com and the partner portal every five minutes, with the history of every incident. Questions? Email [hello@ageraapp.com](mailto:hello@ageraapp.com).
   navbar:
     - title: Status
       href: /
-    - title: GitHub
-      href: https://github.com/$OWNER/$REPO
+    - title: Website
+      href: https://ageraapp.com
+    - title: Help centre
+      href: https://ageraapp.com/pages/help
+    - title: Contact
+      href: https://ageraapp.com/pages/contact
+  theme: light
+  i18n:
+    footer: "© Agera · Built with Upptime"
 
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
+# Rebuild the status site every hour, not once a day: the README and issues update within five
+# minutes of an incident, but the Pages site only changes when this workflow runs.
+workflowSchedule:
+  staticSite: "0 * * * *"
