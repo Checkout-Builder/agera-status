@@ -46,10 +46,11 @@ status-website:
     - title: Contact
       href: https://ageraapp.com/pages/contact
   theme: light
-  i18n:
-    footer: "© Agera · Built with Upptime"
 
-# Rebuild the status site every hour, not once a day: the README and issues update within five
-# minutes of an incident, but the Pages site only changes when this workflow runs.
-workflowSchedule:
-  staticSite: "0 * * * *"
+i18n:
+  footer: "© Agera · Built with Upptime"
+
+# No workflowSchedule override: changing a workflow file needs a token with the `workflows`
+# permission, which the repository's own token lacks. With a GH_PAT secret in place (see SETUP.md)
+# the site also rebuilds on every status change instead of once a day; until then, the README and
+# the incident issues are current within five minutes and the site catches up daily.
